@@ -30,8 +30,33 @@ READ_SCOPES = [
 ]
 
 
+TOOL_REQUIREMENTS = {
+    "artifact-hash": ["python"], "manifest-dex": ["apktool", "jadx"],
+    "java-mapping": ["jadx", "recaf", "enigma"], "resource-map": ["apktool"],
+    "jni-table": ["frida", "adb"], "jni-arm64": ["ghidra", "radare2", "rizin"],
+    "jni-arm32": ["ghidra", "radare2", "rizin"], "jni-x86": ["ghidra", "radare2", "rizin"],
+    "jni-x86_64": ["ghidra", "radare2", "rizin"], "native-arm64": ["ghidra", "ida", "radare2"],
+    "native-arm32": ["ghidra", "ida", "radare2"], "native-x86": ["ghidra", "ida", "radare2"],
+    "native-x86_64": ["ghidra", "ida", "radare2"], "vm-dispatch": ["ghidra", "ida", "rizin"],
+    "vmp-handlers": ["ghidra", "ida", "radare2"], "zkm-strings": ["jadx", "cfr", "vineflower"],
+    "dynamic-trace": ["frida", "adb", "android-emulator"], "evidence-merge": ["python"],
+    "verification": ["python", "adb"], "final-report": ["python"],
+}
+
+def requirements(scope: str) -> list[str]:
+    if scope in TOOL_REQUIREMENTS:
+        return TOOL_REQUIREMENTS[scope]
+    if scope in {"ghidra", "radare2", "cfg", "imports", "exports", "strings", "xref", "function-counts", "native-hashes"}:
+        return ["ghidra", "radare2", "rizin"]
+    if scope in {"recaf", "enigma", "vineflower", "cfr", "jadx-errors", "bytecode-readers", "smali-gaps"}:
+        return ["jadx", "recaf", "vineflower", "cfr"]
+    if scope in {"runtime-device", "runtime-emulator", "frida", "logcat", "loaded-modules", "loaded-dex", "register-natives", "input-output"}:
+        return ["frida", "adb", "android-emulator"]
+    return ["python"]
+
 def task(task_id: str, mode: str, scope: str, concurrency: int, depends_on=None) -> dict:
-    return {"id": task_id, "mode": mode, "scope": scope, "status": "queued", "depends_on": depends_on or [], "actual_concurrency_cap": concurrency}
+    tools = requirements(scope)
+    return {"id": task_id, "mode": mode, "scope": scope, "status": "queued", "depends_on": depends_on or [], "actual_concurrency_cap": concurrency, "tool_requirements": tools, "evidence_target": f"reports/{scope}.json"}
 
 
 def main() -> int:

@@ -23,3 +23,4 @@ Merge rules:
 - Conflicting addresses or signatures remain `CONFLICT` until a third independent check resolves them.
 - A queued or failed task never counts as completed coverage.
 - The final gate consumes task status, not progress messages.
+- Every task declares `tool_requirements` and an `evidence_target`; a task with an unrecorded missing tool is blocked rather than marked successful.

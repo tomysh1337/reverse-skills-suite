@@ -1,0 +1,8 @@
+skills/**/debug.keystore
+*.apk
+*.aab
+*.so
+analysis-output/
+__pycache__/
+.reverse-tools/
+tool-inventory.json
