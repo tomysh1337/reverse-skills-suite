@@ -9,3 +9,4 @@ tool-inventory.json
 polyglot-tool-inventory.json
 test-artifacts/
 build/
+phantom-protector/target/
