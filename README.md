@@ -22,3 +22,5 @@ python polyglot-protector-orchestrator/scripts/mc_protect.py plan --project . --
 python polyglot-protector-orchestrator/scripts/mc_protect.py apply --plan build/protection-plan.json
 python polyglot-protector-orchestrator/scripts/deobf_plan.py INPUT.jar --out reports/deobf-plan.json
 ```
+
+The executable Java MVP lives in `phantom-protector/`. It provides light/medium/heavy profiles, string-constant encryption, deterministic class renaming with Minecraft metadata preservation, archive verification, and a configurable Phantom-style verification backend contract. See `phantom-protector/README.md` for build and fixture commands. Native/JNIC/VMP transformation remains an adapter boundary until a separately testable native backend is configured.
