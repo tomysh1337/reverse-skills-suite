@@ -11,3 +11,14 @@ When the inventory reports `pending_user_path`, place existing installations in 
 The repository intentionally contains workflow code and public references only. It does not contain an APK, extracted native libraries, credentials, signing keys, or private analysis output.
 
 Public source references include `reverse-deobf-orchestrator/references/research-sources.md` and the AndroidReverse101-derived workflow at `reverse-deobf-orchestrator/references/androidreverse101.md`. The latter preserves the upstream repository URL, commit, MIT license notice, tool matrix, and evidence hard gates without copying course chapters or sample APKs.
+
+The `polyglot-protector-orchestrator` extends the suite to desktop Java/Minecraft, C/C++ native, and Python artifacts. It contains source-grounded ZKM/PhantomShield/JNIC/native-obfuscator/VMP-style routing, `light`/`medium`/`heavy` Minecraft protection plan generation, a cross-language tool inventory, and a fail-closed full-deobfuscation gate. See `polyglot-protector-orchestrator/references/source-research.md` for repository URLs, commits, license status, and synthesized methods.
+
+Example commands:
+
+```powershell
+python polyglot-protector-orchestrator/scripts/polyglot_tool_inventory.py --project . --tools-dir .reverse-tools --output polyglot-tool-inventory.json
+python polyglot-protector-orchestrator/scripts/mc_protect.py plan --project . --level medium --languages java,cpp,python --out build/protection-plan.json
+python polyglot-protector-orchestrator/scripts/mc_protect.py apply --plan build/protection-plan.json
+python polyglot-protector-orchestrator/scripts/deobf_plan.py INPUT.jar --out reports/deobf-plan.json
+```

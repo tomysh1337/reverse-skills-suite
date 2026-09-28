@@ -70,3 +70,5 @@ Read `references/research-sources.md` for public GitHub/CSDN JNI, VMP, ZKM, and 
 Read `references/androidreverse101.md` for the AndroidReverse101-derived stage map, tool/evidence hard gates, and MIT source notice.
 
 Use `native-feature-checker` before native lifting; its score is triage only and never proves full deobfuscation.
+
+For desktop Java/Minecraft, C/C++ native, Python bytecode, ZKM/PhantomShield/JNIC/native-obfuscator, or VMP-like mixed artifacts, hand off to `../polyglot-protector-orchestrator/SKILL.md`. It shares the same immutable-artifact, tool-evidence, 20+80 scheduling, and fail-closed completion contract.

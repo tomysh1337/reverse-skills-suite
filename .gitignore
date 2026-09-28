@@ -6,3 +6,6 @@ analysis-output/
 __pycache__/
 .reverse-tools/
 tool-inventory.json
+polyglot-tool-inventory.json
+test-artifacts/
+build/
