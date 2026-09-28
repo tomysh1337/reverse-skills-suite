@@ -24,3 +24,5 @@ python polyglot-protector-orchestrator/scripts/deobf_plan.py INPUT.jar --out rep
 ```
 
 The executable Java MVP lives in `phantom-protector/`. It provides light/medium/heavy profiles, string-constant encryption, deterministic class renaming with Minecraft metadata preservation, archive verification, and a configurable Phantom-style verification backend contract. See `phantom-protector/README.md` for build and fixture commands. Native/JNIC/VMP transformation remains an adapter boundary until a separately testable native backend is configured.
+
+Create an importable skill bundle with `pwsh -File phantom-protector/scripts/package-skill.ps1 -Force`. This writes `dist/phantom-protector-v1.skill`; see `phantom-protector/IMPORT.md` for its contents, import layout, JDK-only fallback, and evidence requirements.
