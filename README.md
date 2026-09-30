@@ -23,6 +23,10 @@ python polyglot-protector-orchestrator/scripts/mc_protect.py apply --plan build/
 python polyglot-protector-orchestrator/scripts/deobf_plan.py INPUT.jar --out reports/deobf-plan.json
 ```
 
-The executable Java MVP lives in `phantom-protector/`. It provides light/medium/heavy profiles, string-constant encryption, deterministic class renaming with Minecraft metadata preservation, archive verification, and a configurable Phantom-style verification backend contract. See `phantom-protector/README.md` for build and fixture commands. Native/JNIC/VMP transformation remains an adapter boundary until a separately testable native backend is configured.
+The original executable Java MVP lives in `phantom-protector/`. It provides light/medium/heavy profiles, string-constant encryption, deterministic class renaming with Minecraft metadata preservation, archive verification, and a configurable Phantom-style verification backend contract. See `phantom-protector/README.md` for build and fixture commands. Its native transformation remains an adapter boundary; this legacy MVP is distinct from the current Starry desktop implementation.
+
+The current Starry 0.6.0 application is maintained separately in the private [starry-obfuscator repository](https://github.com/tomysh1337/starry-obfuscator). The public [Starry workflow skill](skills/starry-obfuscator/SKILL.md) describes its real component routing, six desktop native targets, distribution boundaries, and verification evidence without bundling private implementation, runtime data, mappings, or third-party tool binaries. The GUI runs on Windows x64; protected JAR targets cover Windows/Linux/macOS × x64/ARM64. Windows x64 and Linux x64 have runtime evidence; the remaining targets have extraction and binary-header evidence only.
+
+For JAR strength reviews, use the [measurement guidance](skills/java-reverse-toolchain/references/obfuscation-strength.md): separate application methods from generated runtime entries, classify invokedynamic by bootstrap, and distinguish actual execution from resource/header checks.
 
 Create an importable skill bundle with `pwsh -File phantom-protector/scripts/package-skill.ps1 -Force`. This writes `dist/phantom-protector-v1.skill`; see `phantom-protector/IMPORT.md` for its contents, import layout, JDK-only fallback, and evidence requirements.

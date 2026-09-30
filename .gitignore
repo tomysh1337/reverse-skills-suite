@@ -10,3 +10,6 @@ polyglot-tool-inventory.json
 test-artifacts/
 build/
 phantom-protector/target/
+
+# Starry's desktop/backend implementation is published to its private repository.
+polyglot-protector-orchestrator/phantom-protector/

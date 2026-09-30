@@ -50,6 +50,8 @@ signatures only in a derived test artifact and document that action.
 
 ## Static-first sequence
 
+For an obfuscation-strength assessment, first read [measurement guidance](references/obfuscation-strength.md). A review does not require completing full deobfuscation. Keep reported counts and conclusions tied to the exact JAR and to the kind of evidence actually collected.
+
 1. Run `jar tf`, inspect `META-INF`, service descriptors, module-info, Kotlin
    metadata, multi-release entries, and embedded libraries.
 2. Use `javap -c -p -v` on representative classes. Record invokedynamic,

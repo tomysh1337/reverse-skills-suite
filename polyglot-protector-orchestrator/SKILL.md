@@ -16,6 +16,8 @@ This skill treats obfuscation and recovery as two sides of one reproducible buil
 
 ## Protection profiles
 
+For the Starry desktop implementation, use [the Starry workflow](../skills/starry-obfuscator/SKILL.md). It records the implemented native targets and evidence boundaries. The legacy `phantom-protector` MVP and generic adapter plans do not establish what the current desktop application executed. For strength-only reviews, read [measurement guidance](../skills/java-reverse-toolchain/references/obfuscation-strength.md) and inspect the exact artifact hash before assigning any component or coverage claim.
+
 Use `scripts/mc_protect.py` to generate a profile and execute only tools that are present:
 
 ```powershell
